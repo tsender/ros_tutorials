@@ -11,11 +11,23 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   std_msgs
+  beginner_msgs
 )
+
+catkin_package(INCLUDE_DIRS include)
+
+## Specify additional locations of header files
+## Your package locations should be listed before other locations
+include_directories(include ${catkin_INCLUDE_DIRS})
+
+add_executable(test_pub_sub src/test_pub_sub.cpp)
+target_link_libraries(test_pub_sub ${catkin_LIBRARIES})
+add_dependencies(test_pub_sub ${catkin_EXPORTED_TARGETS})
+
+########################################################
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -113,12 +125,7 @@ catkin_package(
 ## Build ##
 ###########
 
-## Specify additional locations of header files
-## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}

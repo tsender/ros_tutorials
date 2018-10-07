@@ -13,6 +13,17 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+add_message_files(
+  FILES
+  MyMsg.msg
+)
+
+generate_messages(DEPENDENCIES std_msgs geometry_msgs)
+catkin_package(CATKIN_DEPENDS message_runtime)
+include_directories(${catkin_INCLUDE_DIRS})
+
+###############################################################
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
